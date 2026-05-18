@@ -1,0 +1,21 @@
+{
+  "name": "Meu Calculador de Notas",
+  "short_name": "Notas Colab",
+  "description": "Um calculador de notas interativo feito em Colab.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#222222",
+  "theme_color": "#28a745",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
