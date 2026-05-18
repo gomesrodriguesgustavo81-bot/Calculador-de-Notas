@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Calculador de Notas</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Notas Colab">
+    <meta name="theme-color" content="#28a745">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'calculo1')">Cálculo 1</button>
+        <button class="tab-button" onclick="openTab(event, 'pmc')">PMC</button>
+        <button class="tab-button" onclick="openTab(event, 'micro')">Micro</button>
+        <button class="tab-button" onclick="openTab(event, 'cal')">Calendário</button>
+    </div>
+    <div id="calculo1" class="tab-content active">
+        <div class="card">
+            <h2>Cálculo 1</h2>
+            <div class="input-label">P1 e Data:</div>
+            <input type="number" id="c1_p1" class="c1-grade" placeholder="Nota P1" min="0" max="10" oninput="saveAndCalc()">
+            <input type="date" id="date_c1_p1" class="date-input" oninput="saveAndCalc()" data-subject="Cálculo" data-exam="P1">
+            <div class="input-label">P2 e Data:</div>
+            <input type="number" id="c1_p2" class="c1-grade" placeholder="Nota P2" min="0" max="10" oninput="saveAndCalc()">
+            <input type="date" id="date_c1_p2" class="date-input" oninput="saveAndCalc()" data-subject="Cálculo" data-exam="P2">
+            <div class="input-label">P3 e Data:</div>
+            <input type="number" id="c1_p3" class="c1-grade" placeholder="Nota P3" min="0" max="10" oninput="saveAndCalc()">
+            <input type="date" id="date_c1_p3" class="date-input" oninput="saveAndCalc()" data-subject="Cálculo" data-exam="P3">
+
+            <div class="input-label">Substitutiva:</div>
+            <input type="number" id="c1_sub" placeholder="Nota Sub" min="0" max="10" oninput="saveAndCalc()">
+            <div class="input-label">Atividades (10%):</div>
+            <input type="number" id="c1_at" placeholder="Nota" min="0" max="10" oninput="saveAndCalc()">
+            <div class="input-label">Extras:</div>
+            <div id="c1_extras" class="extra-list"></div>
+            <button class="add-btn" onclick="addExtra('c1_extras', 'extra-input'); saveAndCalc();">+ Atividade Extra</button>
+            <div class="progress-container"><div id="barC1" class="progress-bar"></div><div id="txtC1" class="progress-text">0.0</div></div>
+            <button class="clear-button" onclick="clearFields('calculo1')">Limpar</button>
+        </div>
+    </div>
+    <div id="pmc" class="tab-content">
+        <div class="card">
+            <h2>Prog. e Modelagem</h2>
+            <div class="input-label">A1 e Data (20%):</div>
+            <input type="number" id="pmc_a1" class="pmc-grade" placeholder="Nota A1" min="0" max="10" oninput="saveAndCalc()">
+            <input type="date" id="date_pmc_a1" class="date-input" oninput="saveAndCalc()" data-subject="PMC" data-exam="A1">
+            <div class="input-label">A2 e Data (20%):</div>
+            <input type="number" id="pmc_a2" class="pmc-grade" placeholder="Nota A2" min="0" max="10" oninput="saveAndCalc()">
+            <input type="date" id="date_pmc_a2" class="date-input" oninput="saveAndCalc()" data-subject="PMC" data-exam="A2">
+            <div class="input-label">A3 e Data (20%):</div>
+            <input type="number" id="pmc_a3" class="pmc-grade" placeholder="Nota A3" min="0" max="10" oninput="saveAndCalc()">
+            <input type="date" id="date_pmc_a3" class="date-input" oninput="saveAndCalc()" data-subject="PMC" data-exam="A3">
+
+            <div class="input-label">Substitutiva:</div>
+            <input type="number" id="pmc_sub" placeholder="Nota Sub" min="0" max="10" oninput="saveAndCalc()">
+            <div class="input-label">Atividades Finais (40%):</div>
+            <div id="pmc_finais" class="extra-list"></div>
+            <button class="add-btn" onclick="addExtra('pmc_finais', 'pmc-final'); saveAndCalc();">+ Atividade Final</button>
+            <div class="input-label">Extras:</div>
+            <div id="pmc_extras" class="extra-list"></div>
+            <button class="add-btn" onclick="addExtra('pmc_extras', 'extra-input'); saveAndCalc();">+ Atividade Extra</button>
+            <div class="progress-container"><div id="barPMC" class="progress-bar"></div><div id="txtPMC" class="progress-text">0.0</div></div>
+            <button class="clear-button" onclick="clearFields('pmc')">Limpar</button>
+        </div>
+    </div>
+    <div id="micro" class="tab-content">
+        <div class="card">
+            <h2>Microeconomia</h2>
+            <div class="input-label">P1 e Data:</div>
+            <input type="number" id="m_p1" class="m-grade" placeholder="Nota P1" min="0" max="10" oninput="saveAndCalc()">
+            <input type="date" id="date_m_p1" class="date-input" oninput="saveAndCalc()" data-subject="Micro" data-exam="P1">
+            <div class="input-label">P2 e Data:</div>
+            <input type="number" id="m_p2" class="m-grade" placeholder="Nota P2" min="0" max="10" oninput="saveAndCalc()">
+            <input type="date" id="date_m_p2" class="date-input" oninput="saveAndCalc()" data-subject="Micro" data-exam="P2">
+            <div class="input-label">Substitutiva:</div>
+            <input type="number" id="m_sub" placeholder="Nota Sub" min="0" max="10" oninput="saveAndCalc()">
+            <div class="input-label">Extras:</div>
+            <div id="m_extras" class="extra-list"></div>
+            <button class="add-btn" onclick="addExtra('m_extras', 'extra-input'); saveAndCalc();">+ Atividade Extra</button>
+            <div class="progress-container"><div id="barM" class="progress-bar"></div><div id="txtM" class="progress-text">0.0</div></div>
+            <button class="clear-button" onclick="clearFields('micro')">Limpar</button>
+        </div>
+    </div>
+    <div id="cal" class="tab-content"><div class="card"><h2>Calendário</h2><div id="calendar-grid"></div></div></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
